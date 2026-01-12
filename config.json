@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "src": "src/pages/Login.tsx"
+    },
+    {
+      "path": "/app",
+      "src": "src/pages/ContentLayout.tsx"
+    }
+  ],
+  "components": [
+    {"name": "MobileContainer", "src": "src/components/MobileContainer.tsx"},
+    {"name": "HomeView", "src": "src/views/HomeView.tsx"},
+    {"name": "MessageView", "src": "src/views/MessageView.tsx"},
+    {"name": "RecordsView", "src": "src/views/RecordsView.tsx"},
+    {"name": "ProfileView", "src": "src/views/ProfileView.tsx"}
+  ]
+}
