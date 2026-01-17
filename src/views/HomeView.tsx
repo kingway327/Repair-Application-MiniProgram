@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Bell, Wrench, Bot, ArrowRight, Activity, Calendar } from 'lucide-react';
+import { Bell, Wrench, Bot, Activity, Calendar } from 'lucide-react';
 
-const HomeView = () => {
+interface HomeViewProps {
+  onNavigateToRepairApplication?: () => void;
+  onNavigateToAIAgent?: () => void;
+}
+
+const HomeView: React.FC<HomeViewProps> = ({
+  onNavigateToRepairApplication,
+  onNavigateToAIAgent
+}) => {
   // Simple carousel state
   const [currentSlide, setCurrentSlide] = useState(0);
   const news = [
@@ -36,7 +44,7 @@ const HomeView = () => {
         {/* News Carousel */}
         <div className="relative w-full h-40 rounded-xl overflow-hidden shadow-custom bg-white">
           {news.map((item, index) => (
-            <div 
+            <div
               key={item.id}
               className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
             >
@@ -48,9 +56,9 @@ const HomeView = () => {
           ))}
           <div className="absolute bottom-2 right-4 flex space-x-1">
             {news.map((_, idx) => (
-              <div 
-                key={idx} 
-                className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentSlide ? 'bg-white w-3' : 'bg-white/50'}`} 
+              <div
+                key={idx}
+                className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentSlide ? 'bg-white w-3' : 'bg-white/50'}`}
               />
             ))}
           </div>
@@ -77,7 +85,10 @@ const HomeView = () => {
 
         {/* Main Actions */}
         <div className="grid grid-cols-2 gap-4">
-          <button className="bg-white p-5 rounded-xl shadow-custom flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform border border-transparent hover:border-primary/20">
+          <button
+            onClick={onNavigateToRepairApplication}
+            className="bg-white p-5 rounded-xl shadow-custom flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform border border-transparent hover:border-primary/20"
+          >
             <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/30">
               <Wrench className="text-white w-7 h-7" />
             </div>
@@ -87,7 +98,10 @@ const HomeView = () => {
             </div>
           </button>
 
-          <button className="bg-white p-5 rounded-xl shadow-custom flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform border border-transparent hover:border-violet-500/20">
+          <button
+            onClick={onNavigateToAIAgent}
+            className="bg-white p-5 rounded-xl shadow-custom flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform border border-transparent hover:border-violet-500/20"
+          >
             <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/30">
               <Bot className="text-white w-7 h-7" />
             </div>
